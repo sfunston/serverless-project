@@ -1,0 +1,14 @@
+{
+  "name": "<LAMBDA NAME>",
+  "version": "1.0.0",
+  "description": "Submits jobs to transcoder"
+  "main": "index.js",
+  "scripts": {
+    "deploy": "aws lambda update-function-code --function-name <LAMBDA ARN> --zip-file fileb://Lambda-Deployment.zip",
+    "predeploy": "7z a Lambda-Deployment.zip -r * -xr!*.zip -xr!*.log -xr!*git\\*"
+  },
+ "dependencies": {
+    "aws-sdk": "latest"
+  }
+}
+

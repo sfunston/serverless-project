@@ -1,0 +1,17 @@
+{
+  "name": "<LAMBDA NAME>",
+  "version": "1.0.0",
+  "description": "Lists videos in bucket",
+  "main": "index.js",
+  "scripts": {
+    "create": "aws lambda create-function --function-name <LAMBDA NAME> --handler index.handler --memory-size 128 --runtime nodejs4.3 
+	 --role <LAMBDA ARN> --timeout 3 --publish --zip-file fileb://Lambda-Deployment.zip",
+    "deploy": "aws lambda update-function-code --function-name get-video-list --zip-file fileb://Lambda-Deployment.zip",
+    "precreate": "7z a Lambda-Deployment.zip -r * -xr!*.zip -xr!*.log -xr!*git\\*",
+    "predeploy": "7z a Lambda-Deployment.zip -r * -xr!*.zip -xr!*.log -xr!*git\\*"
+  },
+  "dependencies": {
+    "async": "^2.6.0",
+    "aws-sdk": "latest"
+  }
+}
